@@ -27,7 +27,7 @@ node{
         
         def dockerRun = ' docker run  -d -p 8080:8080 --name java-web-app suriyanaraja/java-web-app'
          
-         sshagent(['DOCKER_SERVER']) {
+         sshagent(['docker_ssh_password']) {
           sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.178 docker stop java-web-app || true'
           sh 'ssh  ubuntu@13.234.59.178 docker rm java-web-app || true'
           sh 'ssh  ubuntu@13.234.59.178 docker rmi -f  $(docker images -q) || true'
